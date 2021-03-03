@@ -10,7 +10,7 @@ function Main() {
 
   useEffect(() => {
     fetchData().then((res) => setFilms(res));
-  }, [title]);
+  }, []);
 
   const handleClick = (id) => {
     for (let i = 0; i < films.length; i++) {
@@ -20,10 +20,12 @@ function Main() {
         setCrawl(films[i].opening_crawl);
       }
     }
+    const element = document.querySelector('.crawl');
+    element.style.animation = 'none';
+    setTimeout(() => {
+      element.style.animation = null; 
+    }, 100) 
   };
-
-  console.log(crawl);
-  console.log(date);
 
   return (
     <>
